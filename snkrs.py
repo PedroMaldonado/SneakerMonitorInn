@@ -3,9 +3,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-import pytest
+#import pytest
 import win10toast
-import webbrowser
+#import webbrowser
 
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 driver = webdriver.Chrome(PATH)
@@ -34,7 +34,7 @@ try:
     #print(buttonBuy2.text)
     if(buttonState2 == "COMPRAR"):
         print(nameSneaker2.text, "\t", buttonBuy2.text, "\t", "Released")
-
+        toaster.show_toast(title='Python', msg='Released', duration=10)
             #Opening released tab. (Gives access denied)
             #driver.execute_script("window.open('');")
             #driver.switch_to.window(driver.window_handles[1])
@@ -43,7 +43,7 @@ try:
             #driver.switch_to.window(driver.window_handles[0])
     else:
         print(nameSneaker2.text, "\t", buttonBuy2.text, "\t", "Not released yet")
-        toaster.show_toast(title='Python', msg='Released', duration=10)
+        #toaster.show_toast(title='Python', msg='Released', duration=10)
         #webbrowser.open(url, new=2)
 
 finally:
