@@ -4,11 +4,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import pytest
+import win10toast
+import webbrowser
 
 PATH = "C:\Program Files (x86)\chromedriver.exe"
 driver = webdriver.Chrome(PATH)
 
+toaster = win10toast.ToastNotifier()
+
 driver.get("https://www.innvictus.com/lanzamientos")
+
+#url = "https://www.innvictus.com/lanzamientos"
+#webbrowser.open(url, new=2)
 
 try:
     main = WebDriverWait(driver, 10).until(
@@ -36,6 +43,8 @@ try:
             #driver.switch_to.window(driver.window_handles[0])
     else:
         print(nameSneaker2.text, "\t", buttonBuy2.text, "\t", "Not released yet")
-            
+        toaster.show_toast(title='Python', msg='Released', duration=10)
+        #webbrowser.open(url, new=2)
+
 finally:
     driver.close()
